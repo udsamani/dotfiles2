@@ -1,0 +1,27 @@
+# You can put files here to add functionality separated per file, which
+# will be ignored by git.
+# Files on the custom/ directory will be automatically loaded by the init
+# script, in alphabetical order.
+
+# For example: add yourself some shortcuts to projects you often work on.
+#
+# brainstormr=~/Projects/development/planetargon/brainstormr
+# cd $brainstormr
+#
+#
+#Environment Variables
+export REDIS_USERNAME=admin
+export REDIS_PASSWORD=c213be9d86a90a60fa69ee4ecc16eaf1d7a030fce9c7dee911627c5bde31cee4
+#
+TS_RELEASE=/usr/local/scaligent/release
+CALLOSUM_TARGET=callosum/server/target
+function sshneb {
+  sshpass -p 'th0ughtSp0t' ssh -o StrictHostKeyChecking=no admin@"$1"
+}
+
+function ptomcat {
+  sshpass -p 'th0ughtSp0t' rsync -ah --progress \
+  -e 'ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null' \
+  "$HOME"/thoughtspot/$CALLOSUM_TARGET/callosum-server-1.0-SNAPSHOT.war admin@"$1":$TS_RELEASE/$CALLOSUM_TARGET/
+}
+

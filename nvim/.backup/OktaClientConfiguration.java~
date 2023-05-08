@@ -1,0 +1,32 @@
+package com.thoughtspot.identityokta.admin.configuration;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.okta.sdk.authc.credentials.TokenClientCredentials;
+import com.okta.sdk.client.AuthorizationMode;
+import com.okta.sdk.client.Client;
+import com.okta.sdk.client.Clients;
+import com.okta.spring.boot.sdk.config.OktaClientProperties;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Configuration
+public class OktaClientConfiguration {
+
+    @Bean
+    @ConfigurationProperties(prefix = "okta")
+    OktaClientProperties oktaClientProperties() {
+        return new OktaClientProperties();
+    }
+
+    @Bean
+    Client oktaClient(OktaClientProperties oktaClientProperties) {
+        return Clients.builder()
+                .setClientCredentials(new TokenClientCredentials(oktaClientProperties.getToken()))
+                .setAuthorizationMode(AuthorizationMode.SSWS)
+                .setOrgUrl(oktaClientProperties.getOrgUrl())
+                .build();
+    }
+}

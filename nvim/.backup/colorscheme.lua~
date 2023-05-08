@@ -1,0 +1,5 @@
+local status, _ = pcall(vim.cmd, "colorscheme murphy")
+if status then
+  print("changed to murphy")
+  return
+end

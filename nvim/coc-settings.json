@@ -1,0 +1,24 @@
+{
+  "languageserver": {
+    "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "trace.server": "verbose",
+      "filetypes": ["go"]
+    }
+  },
+  "java.jdt.ls.directory": "/opt/homebrew/Cellar/jdtls/1.23.0",
+  "java.import.gradle.offline.enabled": true,
+  "java.import.gradle.version": "8.0",
+  "java.import.gradle.wrapper.enabled": false,
+  "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx4G -Xlog:disable",
+  "java.jdt.ls.java.home": "/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home",
+  "java.import.gradle.java.home": "/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home",
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-17",
+      "path": "/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home",
+      "default": true
+    }
+  ]
+}
